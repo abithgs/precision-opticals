@@ -135,6 +135,37 @@ html { scroll-behavior: smooth; }
   .brand-logo-item img { height: 20px; }
   .brand-logo-item svg { height: 22px; }
 }
+/* Store image carousel */
+.store-carousel { position: relative; }
+.store-carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(.22,1,.36,1); }
+.store-carousel-slide { flex: 0 0 100%; height: 100%; }
+.store-carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.store-carousel-dots {
+  position: absolute; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 6px; z-index: 3;
+  bottom: 1rem;
+}
+.store-carousel-dots.above-overlay { bottom: 7.5rem; }
+.store-carousel-dot {
+  width: 6px; height: 6px; border-radius: 9999px;
+  background: white; opacity: 0.55; border: none; cursor: pointer;
+  padding: 0; transition: opacity 0.3s, width 0.3s, border-radius 0.3s;
+}
+.store-carousel-dot.active { opacity: 1; width: 20px; border-radius: 3px; }
+/* Frame image carousel */
+.frame-carousel { position: relative; overflow: hidden; }
+.frame-carousel-track { display: flex; height: 100%; transition: transform 0.4s cubic-bezier(.22,1,.36,1); }
+.frame-carousel-slide { flex: 0 0 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.frame-carousel-dots {
+  position: absolute; bottom: 0.5rem; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 5px; z-index: 10;
+}
+.frame-carousel-dot {
+  width: 5px; height: 5px; border-radius: 9999px;
+  background: #003b79; opacity: 0.25; border: none; cursor: pointer; padding: 0;
+  transition: opacity 0.3s, width 0.3s, border-radius 0.3s;
+}
+.frame-carousel-dot.active { opacity: 0.9; width: 14px; border-radius: 3px; }
 </style>
 <script type="application/ld+json">
 {
@@ -162,7 +193,7 @@ html { scroll-behavior: smooth; }
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": "Sunday",
       "opens": "10:00",
-      "closes": "14:00"
+      "closes": "20:30"
     }
   ],
   "aggregateRating": {
@@ -375,8 +406,21 @@ html { scroll-behavior: smooth; }
   <div class="max-w-7xl mx-auto px-6 md:px-8">
     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
       <div class="lg:w-1/2 relative fade-in">
-        <div class="aspect-[4/5] rounded-[32px] md:rounded-[40px] overflow-hidden ambient-shadow">
-          <img alt="Inside Precision Opticals store, Jayanagar" loading="lazy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm2fBm8zzobpjD_OGMTZSKUciBnkAu_XNDL5AM0adjq1VqXYN13vPPntMNGppjrhC8WTCQikJn7DsFTFnQR2KYwCk4NCNQnzRNh_wDnp3EjyyfWao9ypCXxpkVeABgGJNEpHSAYpQvw6td0QjrQn5_nueUJipWWXBWxZ6X1n7FrP1aKy_tZGg0MBcjTWwIZHgC758toOEcger9DbDMO-i_R8A0x30Iz8Bs76JYHc6rQ0CzZpaF6J0X1bo26RC8n2PkAteUKGfaF-A"/>
+        <div class="aspect-[4/5] rounded-[32px] md:rounded-[40px] overflow-hidden ambient-shadow store-carousel" id="carousel-atelier">
+          <div class="store-carousel-track">
+            <div class="store-carousel-slide"><img alt="Inside Precision Opticals store, Jayanagar" loading="eager" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.26%20PM.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals store interior" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.26%20PM%20%281%29.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals eyewear display" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.27%20PM.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals store, Jayanagar" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.29%20PM.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals frames collection" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.30%20PM.jpeg"/></div>
+          </div>
+          <div class="store-carousel-dots">
+            <button class="store-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="store-carousel-dot" aria-label="Slide 2"></button>
+            <button class="store-carousel-dot" aria-label="Slide 3"></button>
+            <button class="store-carousel-dot" aria-label="Slide 4"></button>
+            <button class="store-carousel-dot" aria-label="Slide 5"></button>
+          </div>
         </div>
         <div class="absolute -bottom-6 -right-4 md:-bottom-8 md:-right-8 glass-overlay p-6 md:p-8 rounded-2xl max-w-[260px] hidden md:block">
           <p class="font-headline font-bold text-primary mb-2">Certified Essilor Experts</p>
@@ -426,44 +470,77 @@ html { scroll-behavior: smooth; }
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 relative overflow-hidden flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors">
-          <img alt="Classic Aviator eyeglass frame in gold metal" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAip0TOAEgnqVlYiq0I7A3kmncMLwhEylh28rorYul1EW0mKkWhKjisb-LNSeGGEgIbAMMtCdvo6ZGz07qi5L20kjp4UqabcjHOxcoXei2u2u8EILUrM0R8PRQGOsy9tM7DaF0y7OTongBd89FAZ_ZkcZ3YXynJrva0b8DFmKDHyZ-RcuX3RVMff3oZKN0QxWxE06Nqjw0KoVsHpEzjHBU7udxGK2N1rxs0ic6WhaWX80pE4q2tyItNB2xZBVi_9x4-sfbbEcNiAZ0"/>
-          <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Vogue gray and pink wayfarer frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.02%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink frame side view" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.15%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.26%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink frame angle" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.06.06%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink frame close up" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.06.19%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 4"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 5"></button>
+          </div>
+          <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity z-10">
             <span class="material-symbols-outlined text-primary text-lg">favorite</span>
           </div>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Classic Aviator</h3>
-        <p class="text-on-surface-variant text-xs md:text-sm">Men · Gold Metal</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Vogue</h3>
+        <p class="text-on-surface-variant text-xs md:text-sm">Women · Gray & Pink</p>
+      </div>
+      <div class="group fade-in">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Oakley clear and black exchange frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.07%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley clear frame side view" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.14%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley clear frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.22%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+          </div>
+          <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity z-10">
+            <span class="material-symbols-outlined text-primary text-lg">favorite</span>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Oakley</h3>
+        <p class="text-on-surface-variant text-xs md:text-sm">Unisex · Clear & Black</p>
       </div>
       <div class="group fade-in">
         <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 relative overflow-hidden flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors">
-          <img alt="Round Heritage unisex acetate eyeglass frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxDe2pC_8YlqSKI1kGnJXn_zJFgYfzG3-TEIcXmeork0Rgs1hrjTxbs6WuvO68GxVPJEn6snMIqCJ21QbLsq2yInOv-wvFC6w_Q85uh-Z2ud3ZRn2asRKVlvltUXbQwSeJZfDMWCnyKHOTnV4zUm37z4mem8_jampkDy65pUr0vDRwO4lpOdKh-QUXW3heE6FP24wqARy3KIgOKxWa49TKR2UMLECxvDkT4F8KXr4i9hcMcILk3T3ga3Am5FNtKgOQvI-X_HTscjk"/>
+          <img alt="Calvin Klein black and gold acetate frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.22.09%20PM.png"/>
           <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity">
             <span class="material-symbols-outlined text-primary text-lg">favorite</span>
           </div>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Round Heritage</h3>
-        <p class="text-on-surface-variant text-xs md:text-sm">Unisex · Acetate</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Calvin Klein</h3>
+        <p class="text-on-surface-variant text-xs md:text-sm">Women · Black & Gold</p>
       </div>
       <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 relative overflow-hidden flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors">
-          <img alt="Cat Eye Luxe women's frame in rose gold" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2y8cb6dKaiZBnLJy0UhybPFBMjNkQHThEEIVUX7200m5cr8YLXi9Ii1aB59mVPKhWQb_QL8g63cjEL_5eRKckWJmSj1dhFx2bLuVW_Y_ToAWnv98Z4QRYX8Y6q3CDEGh4ZgIKr-XgUuVw19Sq2ZrAzV1u58j17Pl31rFy3p2ZdBHG1MLdE2vDv8R77bMyFKON4orVVUA8FyQRcmLw2TdNcAWgisAtIfmxkgMfSOCwqm5dtVoZ8ga2gB6JzOQ_KMP26uUF05NWPdk"/>
-          <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy acetate frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.11%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.49%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.57%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame angle" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.29.02%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 4"></button>
+          </div>
+          <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity z-10">
             <span class="material-symbols-outlined text-primary text-lg">favorite</span>
           </div>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Cat Eye Luxe</h3>
-        <p class="text-on-surface-variant text-xs md:text-sm">Women · Rose Gold</p>
-      </div>
-      <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 relative overflow-hidden flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors">
-          <img alt="Legacy Aviator unisex carbon fiber frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByNeIf70w-CF_9IRtcNaDpblAJ8AzIiCooV2hEb3c9mrFivSUZUOmTeXcG75c1ysqpVuuz---P_AStbm4VUxLB4VOgesJpckbZ1nIq0kUoS7Yjwr3edUlpZxdR-UC5wBkiOvl5ARc52HDnj7FWNyK0Et_bTTKcu-JoIUtS9jAZMFM4eEKA7ZhQVh0tcICec9kWaMtczc0-PRvxPfmrLGc3XvdJJDuvEmG4f2U89IHVdPMKndx8_4FAaA-U6KEUHve8z7A6bnsPCVE"/>
-          <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity">
-            <span class="material-symbols-outlined text-primary text-lg">favorite</span>
-          </div>
-        </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Legacy Aviator</h3>
-        <p class="text-on-surface-variant text-xs md:text-sm">Unisex · Carbon Fiber</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg mb-0.5">Emporio Armani</h3>
+        <p class="text-on-surface-variant text-xs md:text-sm">Men · Navy Acetate</p>
       </div>
     </div>
   </div>
@@ -713,73 +790,170 @@ html { scroll-behavior: smooth; }
       <button class="filter-btn bg-on-surface text-surface px-5 py-2 rounded-full font-headline font-bold text-xs md:text-sm transition-all" aria-pressed="true" onclick="filterFrames('all',this)">All</button>
       <button class="filter-btn bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-headline font-bold text-xs md:text-sm hover:bg-on-surface hover:text-surface transition-all" aria-pressed="false" onclick="filterFrames('men',this)">Men</button>
       <button class="filter-btn bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-headline font-bold text-xs md:text-sm hover:bg-on-surface hover:text-surface transition-all" aria-pressed="false" onclick="filterFrames('women',this)">Women</button>
-      <button class="filter-btn bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-headline font-bold text-xs md:text-sm hover:bg-on-surface hover:text-surface transition-all" aria-pressed="false" onclick="filterFrames('kids',this)">Kids</button>
-      <button class="filter-btn bg-surface-container-highest text-on-surface px-5 py-2 rounded-full font-headline font-bold text-xs md:text-sm hover:bg-on-surface hover:text-surface transition-all" aria-pressed="false" onclick="filterFrames('sunglasses',this)">Sunglasses</button>
     </div>
     <!-- Grid -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" id="framesGrid">
-      <div class="group frame-item fade-in" data-cat="men sunglasses">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Aviator Classic men's gold metal frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAip0TOAEgnqVlYiq0I7A3kmncMLwhEylh28rorYul1EW0mKkWhKjisb-LNSeGGEgIbAMMtCdvo6ZGz07qi5L20kjp4UqabcjHOxcoXei2u2u8EILUrM0R8PRQGOsy9tM7DaF0y7OTongBd89FAZ_ZkcZ3YXynJrva0b8DFmKDHyZ-RcuX3RVMff3oZKN0QxWxE06Nqjw0KoVsHpEzjHBU7udxGK2N1rxs0ic6WhaWX80pE4q2tyItNB2xZBVi_9x4-sfbbEcNiAZ0"/>
-        </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Aviator Classic</h3>
-        <p class="text-on-surface-variant text-xs">Men · Gold Metal</p>
-        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
-      </div>
+      <!-- Vogue Gray/Pink -->
       <div class="group frame-item fade-in" data-cat="women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Cat Eye Luxe women's rose gold frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2y8cb6dKaiZBnLJy0UhybPFBMjNkQHThEEIVUX7200m5cr8YLXi9Ii1aB59mVPKhWQb_QL8g63cjEL_5eRKckWJmSj1dhFx2bLuVW_Y_ToAWnv98Z4QRYX8Y6q3CDEGh4ZgIKr-XgUuVw19Sq2ZrAzV1u58j17Pl31rFy3p2ZdBHG1MLdE2vDv8R77bMyFKON4orVVUA8FyQRcmLw2TdNcAWgisAtIfmxkgMfSOCwqm5dtVoZ8ga2gB6JzOQ_KMP26uUF05NWPdk"/>
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Vogue gray and pink wayfarer" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.02%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink side view" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.15%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.26%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink angle" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.06.06%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue gray pink close up" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.06.19%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 4"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 5"></button>
+          </div>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Cat Eye Luxe</h3>
-        <p class="text-on-surface-variant text-xs">Women · Rose Gold</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Vogue</h3>
+        <p class="text-on-surface-variant text-xs">Women · Gray & Pink</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
+      <!-- Vogue Burgundy -->
+      <div class="group frame-item fade-in" data-cat="women">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Vogue burgundy cat-eye frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.05.54%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue burgundy frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.07.17%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue burgundy frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.07.24%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Vogue burgundy frame angle" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.07.36%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 4"></button>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Vogue</h3>
+        <p class="text-on-surface-variant text-xs">Women · Burgundy</p>
+        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
+      </div>
+      <!-- Tommy Hilfiger Titanium -->
       <div class="group frame-item fade-in" data-cat="men women">
         <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Round Heritage unisex acetate frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxDe2pC_8YlqSKI1kGnJXn_zJFgYfzG3-TEIcXmeork0Rgs1hrjTxbs6WuvO68GxVPJEn6snMIqCJ21QbLsq2yInOv-wvFC6w_Q85uh-Z2ud3ZRn2asRKVlvltUXbQwSeJZfDMWCnyKHOTnV4zUm37z4mem8_jampkDy65pUr0vDRwO4lpOdKh-QUXW3heE6FP24wqARy3KIgOKxWa49TKR2UMLECxvDkT4F8KXr4i9hcMcILk3T3ga3Am5FNtKgOQvI-X_HTscjk"/>
+          <img alt="Tommy Hilfiger titanium rectangular frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.21.12%20PM.png"/>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Round Heritage</h3>
-        <p class="text-on-surface-variant text-xs">Unisex · Acetate</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Tommy Hilfiger</h3>
+        <p class="text-on-surface-variant text-xs">Unisex · Titanium</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
-      <div class="group frame-item fade-in" data-cat="men sunglasses">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Legacy Aviator unisex carbon fiber frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByNeIf70w-CF_9IRtcNaDpblAJ8AzIiCooV2hEb3c9mrFivSUZUOmTeXcG75c1ysqpVuuz---P_AStbm4VUxLB4VOgesJpckbZ1nIq0kUoS7Yjwr3edUlpZxdR-UC5wBkiOvl5ARc52HDnj7FWNyK0Et_bTTKcu-JoIUtS9jAZMFM4eEKA7ZhQVh0tcICec9kWaMtczc0-PRvxPfmrLGc3XvdJJDuvEmG4f2U89IHVdPMKndx8_4FAaA-U6KEUHve8z7A6bnsPCVE"/>
-        </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Legacy Aviator</h3>
-        <p class="text-on-surface-variant text-xs">Men · Carbon Fiber</p>
-        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
-      </div>
-      <div class="group frame-item fade-in" data-cat="men women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Executive Rectangle unisex TR-90 flex frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAip0TOAEgnqVlYiq0I7A3kmncMLwhEylh28rorYul1EW0mKkWhKjisb-LNSeGGEgIbAMMtCdvo6ZGz07qi5L20kjp4UqabcjHOxcoXei2u2u8EILUrM0R8PRQGOsy9tM7DaF0y7OTongBd89FAZ_ZkcZ3YXynJrva0b8DFmKDHyZ-RcuX3RVMff3oZKN0QxWxE06Nqjw0KoVsHpEzjHBU7udxGK2N1rxs0ic6WhaWX80pE4q2tyItNB2xZBVi_9x4-sfbbEcNiAZ0"/>
-        </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Executive Rectangle</h3>
-        <p class="text-on-surface-variant text-xs">Unisex · TR-90 Flex</p>
-        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
-      </div>
+      <!-- Tommy Hilfiger Nude -->
       <div class="group frame-item fade-in" data-cat="women">
         <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Rimless Elegance ultra-light women's frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2y8cb6dKaiZBnLJy0UhybPFBMjNkQHThEEIVUX7200m5cr8YLXi9Ii1aB59mVPKhWQb_QL8g63cjEL_5eRKckWJmSj1dhFx2bLuVW_Y_ToAWnv98Z4QRYX8Y6q3CDEGh4ZgIKr-XgUuVw19Sq2ZrAzV1u58j17Pl31rFy3p2ZdBHG1MLdE2vDv8R77bMyFKON4orVVUA8FyQRcmLw2TdNcAWgisAtIfmxkgMfSOCwqm5dtVoZ8ga2gB6JzOQ_KMP26uUF05NWPdk"/>
+          <img alt="Tommy Hilfiger nude tan rectangular frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.23.21%20PM.png"/>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Rimless Elegance</h3>
-        <p class="text-on-surface-variant text-xs">Women · Ultra-Light</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Tommy Hilfiger</h3>
+        <p class="text-on-surface-variant text-xs">Women · Nude</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
-      <div class="group frame-item fade-in" data-cat="kids">
+      <!-- Calvin Klein Black & Gold -->
+      <div class="group frame-item fade-in" data-cat="women">
         <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Junior Flex bendable kids' frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxDe2pC_8YlqSKI1kGnJXn_zJFgYfzG3-TEIcXmeork0Rgs1hrjTxbs6WuvO68GxVPJEn6snMIqCJ21QbLsq2yInOv-wvFC6w_Q85uh-Z2ud3ZRn2asRKVlvltUXbQwSeJZfDMWCnyKHOTnV4zUm37z4mem8_jampkDy65pUr0vDRwO4lpOdKh-QUXW3heE6FP24wqARy3KIgOKxWa49TKR2UMLECxvDkT4F8KXr4i9hcMcILk3T3ga3Am5FNtKgOQvI-X_HTscjk"/>
+          <img alt="Calvin Klein black and gold acetate frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.22.09%20PM.png"/>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Junior Flex</h3>
-        <p class="text-on-surface-variant text-xs">Kids · Bendable</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Calvin Klein</h3>
+        <p class="text-on-surface-variant text-xs">Women · Black & Gold</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
-      <div class="group frame-item fade-in" data-cat="sunglasses">
+      <!-- Calvin Klein Sage Green -->
+      <div class="group frame-item fade-in" data-cat="men women">
         <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
-          <img alt="Sport Shield unisex polarized sunglasses frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByNeIf70w-CF_9IRtcNaDpblAJ8AzIiCooV2hEb3c9mrFivSUZUOmTeXcG75c1ysqpVuuz---P_AStbm4VUxLB4VOgesJpckbZ1nIq0kUoS7Yjwr3edUlpZxdR-UC5wBkiOvl5ARc52HDnj7FWNyK0Et_bTTKcu-JoIUtS9jAZMFM4eEKA7ZhQVh0tcICec9kWaMtczc0-PRvxPfmrLGc3XvdJJDuvEmG4f2U89IHVdPMKndx8_4FAaA-U6KEUHve8z7A6bnsPCVE"/>
+          <img alt="Calvin Klein sage green frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.24.07%20PM.png"/>
         </div>
-        <h3 class="font-headline font-bold text-sm md:text-lg">Sport Shield</h3>
-        <p class="text-on-surface-variant text-xs">Unisex · Polarized</p>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Calvin Klein</h3>
+        <p class="text-on-surface-variant text-xs">Unisex · Sage Green</p>
+        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
+      </div>
+      <!-- Calvin Klein Tan -->
+      <div class="group frame-item fade-in" data-cat="men women">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
+          <img alt="Calvin Klein tan gradient frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.25.14%20PM.png"/>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Calvin Klein</h3>
+        <p class="text-on-surface-variant text-xs">Unisex · Tan</p>
+        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
+      </div>
+      <!-- Oakley Clear/Black -->
+      <div class="group frame-item fade-in" data-cat="men women">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Oakley clear and black frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.07%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley clear frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.14%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley clear frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.22%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Oakley</h3>
+        <p class="text-on-surface-variant text-xs">Unisex · Clear & Black</p>
+        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
+      </div>
+      <!-- Oakley Black Angular -->
+      <div class="group frame-item fade-in" data-cat="men">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Oakley black angular frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.27.04%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley black frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.27.22%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley black frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.27.57%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Oakley black frame angle" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.06%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 4"></button>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Oakley</h3>
+        <p class="text-on-surface-variant text-xs">Men · Black</p>
+        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
+      </div>
+      <!-- Emporio Armani Navy Acetate -->
+      <div class="group frame-item fade-in" data-cat="men">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy acetate frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.11%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.49%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.57%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame angle" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.29.02%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 4"></button>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Emporio Armani</h3>
+        <p class="text-on-surface-variant text-xs">Men · Navy Acetate</p>
+        <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
+      </div>
+      <!-- Emporio Armani Navy Metal -->
+      <div class="group frame-item fade-in" data-cat="men">
+        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+          <div class="frame-carousel-track">
+            <div class="frame-carousel-slide"><img alt="Emporio Armani navy metal browline frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.30.58%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani metal frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.31.05%20PM.png"/></div>
+            <div class="frame-carousel-slide"><img alt="Emporio Armani metal frame detail" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.31.13%20PM.png"/></div>
+          </div>
+          <div class="frame-carousel-dots">
+            <button class="frame-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 2"></button>
+            <button class="frame-carousel-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+        <h3 class="font-headline font-bold text-sm md:text-lg">Emporio Armani</h3>
+        <p class="text-on-surface-variant text-xs">Men · Navy Metal</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
     </div>
@@ -821,11 +995,24 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <div class="lg:w-1/2 fade-in">
-        <div class="aspect-[4/5] rounded-[32px] md:rounded-[40px] overflow-hidden ambient-shadow relative">
-          <img alt="Precision Opticals store front, Jayanagar 4th T Block" loading="lazy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm2fBm8zzobpjD_OGMTZSKUciBnkAu_XNDL5AM0adjq1VqXYN13vPPntMNGppjrhC8WTCQikJn7DsFTFnQR2KYwCk4NCNQnzRNh_wDnp3EjyyfWao9ypCXxpkVeABgGJNEpHSAYpQvw6td0QjrQn5_nueUJipWWXBWxZ6X1n7FrP1aKy_tZGg0MBcjTWwIZHgC758toOEcger9DbDMO-i_R8A0x30Iz8Bs76JYHc6rQ0CzZpaF6J0X1bo26RC8n2PkAteUKGfaF-A"/>
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-8">
+        <div class="aspect-[4/5] rounded-[32px] md:rounded-[40px] overflow-hidden ambient-shadow relative store-carousel" id="carousel-about">
+          <div class="store-carousel-track">
+            <div class="store-carousel-slide"><img alt="Precision Opticals store front, Jayanagar 4th T Block" loading="eager" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.26%20PM.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals store interior" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.26%20PM%20%281%29.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals eyewear display" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.27%20PM.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals store, Jayanagar" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.29%20PM.jpeg"/></div>
+            <div class="store-carousel-slide"><img alt="Precision Opticals frames collection" loading="lazy" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.30%20PM.jpeg"/></div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-8" style="z-index:1">
             <p class="text-white font-headline font-bold text-lg">Jayanagar 4th T Block</p>
             <p class="text-white/70 text-sm">Next to AVR Jewellery</p>
+          </div>
+          <div class="store-carousel-dots above-overlay">
+            <button class="store-carousel-dot active" aria-label="Slide 1"></button>
+            <button class="store-carousel-dot" aria-label="Slide 2"></button>
+            <button class="store-carousel-dot" aria-label="Slide 3"></button>
+            <button class="store-carousel-dot" aria-label="Slide 4"></button>
+            <button class="store-carousel-dot" aria-label="Slide 5"></button>
           </div>
         </div>
       </div>
@@ -887,13 +1074,18 @@ html { scroll-behavior: smooth; }
           <p class="font-medium text-on-surface">Monday – Saturday</p>
           <p>10:00 AM – 8:30 PM</p>
           <p class="font-medium text-on-surface mt-2">Sunday</p>
-          <p>10:00 AM – 2:00 PM</p>
+          <p>10:00 AM – 8:30 PM</p>
         </div>
       </div>
     </div>
     <!-- Map -->
     <div class="rounded-3xl overflow-hidden ambient-shadow h-64 md:h-80 fade-in">
-      <img alt="Map showing Precision Opticals location on 34th Cross, Jayanagar 4th T Block, Bengaluru" loading="lazy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJm1AoYK4CZTTkZXXiNs8rp3tmvozmCp48cML6Dmz-J8pIJFS7SosOGbGjW9oL9tPFHS3Yt2ennche36BPA0e_IafOdb2bdJwYUxR2pkU3sFPc_FEIGSy0DH36ZXAfLdLnj0i2AGh823AKSUHQbBgT4w-vbpiYTSUtyoGJbI3qG0Hkci46ON_zYUi1TEt0fyGsMvU4X1JgcRYPU-Mj6ZfPB066Ow2ueFsTJ6FmXB7m3ZedzZpD5pfxmLqcxzwVqWlNnR0JkpZAMk"/>
+      <iframe
+        src="https://maps.google.com/maps?q=Precision+Opticals,+No.16,+34th+Cross,+11th+Main+Road,+Jayanagar+4th+T+Block,+Bengaluru+560041,+India&output=embed"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Precision Opticals on Google Maps">
+      </iframe>
     </div>
   </div>
 </section>
@@ -1060,6 +1252,75 @@ window.addEventListener('scroll', () => {
 (function() {
   const hash = location.hash ? location.hash.slice(1) : '';
   if (VALID_PAGES.includes(hash) && hash !== 'home') switchPage(hash, false);
+})();
+
+// Store image carousel
+(function() {
+  function initStoreCarousel(el) {
+    const track = el.querySelector('.store-carousel-track');
+    const dots = el.querySelectorAll('.store-carousel-dot');
+    const count = dots.length;
+    let current = 0, timer;
+
+    function goTo(i) {
+      current = (i + count) % count;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === current); });
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(function() { goTo(current + 1); }, 4000);
+    }
+
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() { goTo(i); startTimer(); });
+    });
+
+    // Touch/swipe support
+    var startX = 0;
+    el.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); startTimer(); }
+    }, { passive: true });
+
+    goTo(0);
+    startTimer();
+  }
+
+  document.querySelectorAll('.store-carousel').forEach(initStoreCarousel);
+})();
+
+// Frame image carousel (dot-click navigation, no auto-advance)
+(function() {
+  function initFrameCarousel(el) {
+    var track = el.querySelector('.frame-carousel-track');
+    var dots = el.querySelectorAll('.frame-carousel-dot');
+    var count = dots.length;
+    var current = 0;
+
+    function goTo(i) {
+      current = (i + count) % count;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, j) { d.classList.toggle('active', j === current); });
+    }
+
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function(e) { e.stopPropagation(); goTo(i); });
+    });
+
+    var startX = 0;
+    el.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 30) goTo(dx < 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    goTo(0);
+  }
+
+  document.querySelectorAll('.frame-carousel').forEach(initFrameCarousel);
 })();
 </script>
 </body>
