@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Jayanagar's trusted Essilor Expert store since 2000. Premium eyewear and professional eye care in Bengaluru."/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
@@ -82,9 +82,10 @@ tailwind.config = {
         full: "9999px"
       },
       fontFamily: {
-        headline: ["Manrope"],
-        body: ["Inter"],
-        label: ["Inter"]
+        display: ['"DM Serif Display"', 'serif'],
+        headline: ["Manrope", 'sans-serif'],
+        body: ["Inter", 'sans-serif'],
+        label: ["Inter", 'sans-serif']
       }
     }
   }
@@ -212,10 +213,10 @@ html { scroll-behavior: smooth; }
   <div class="max-w-7xl mx-auto px-6 md:px-8">
     <!-- Top Info Bar -->
     <div class="flex justify-between items-center py-2 text-xs text-on-surface-variant border-b border-on-surface/5">
-      <span class="hidden md:inline">📍 34th Cross, 11th Main, Jayanagar 4th T Block, Bengaluru 560041</span>
-      <span class="md:hidden text-[11px]">📍 Jayanagar, Bengaluru</span>
+      <span class="hidden md:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 34th Cross, 11th Main, Jayanagar 4th T Block, Bengaluru 560041</span>
+      <span class="md:hidden text-[11px] flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Jayanagar, Bengaluru</span>
       <div class="flex items-center gap-4">
-        <a href="tel:+919986341896" class="hover:text-primary transition-colors">📞 +91 99863 41896</a>
+        <a href="tel:+919986341896" class="hover:text-primary transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-sm">call</span> +91 99863 41896</a>
         <span class="hidden md:inline text-on-surface/30">|</span>
         <span class="hidden md:inline">Est. 2000</span>
       </div>
@@ -241,15 +242,28 @@ html { scroll-behavior: smooth; }
         </button>
       </div>
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden pb-4 flex flex-col gap-3">
-      <a href="#" data-page="home" class="mob-link font-headline font-bold text-lg py-2 text-primary">Home</a>
-      <a href="#" data-page="lenses" class="mob-link font-headline font-bold text-lg py-2 opacity-60">Lenses</a>
-      <a href="#" data-page="frames" class="mob-link font-headline font-bold text-lg py-2 opacity-60">Frames</a>
-      <a href="#" data-page="about" class="mob-link font-headline font-bold text-lg py-2 opacity-60">About Us</a>
-    </div>
   </div>
 </nav>
+
+<!-- Fullscreen Mobile Menu -->
+<div id="mobileMenu" class="fixed inset-0 z-[200] bg-surface flex flex-col p-8 translate-x-full transition-transform duration-300 ease-in-out">
+  <div class="flex justify-between items-center mb-12">
+    <span class="text-xl font-black tracking-tighter font-headline text-on-surface">Precision Opticals</span>
+    <button onclick="toggleMenu()" class="p-2 -mr-2" aria-label="Close menu">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+  </div>
+  <nav class="flex flex-col flex-1">
+    <a href="#" data-page="home" class="mob-link font-display text-4xl py-4 border-b border-on-surface/10 text-primary">Home</a>
+    <a href="#" data-page="lenses" class="mob-link font-display text-4xl py-4 border-b border-on-surface/10 text-on-surface opacity-50">Lenses</a>
+    <a href="#" data-page="frames" class="mob-link font-display text-4xl py-4 border-b border-on-surface/10 text-on-surface opacity-50">Frames</a>
+    <a href="#" data-page="about" class="mob-link font-display text-4xl py-4 border-b border-on-surface/10 text-on-surface opacity-50">About Us</a>
+  </nav>
+  <div class="mt-auto pt-8 border-t border-on-surface/10">
+    <p class="text-sm text-on-surface-variant mb-3 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">location_on</span> 34th Cross, Jayanagar 4th T Block, Bengaluru</p>
+    <a href="tel:+919986341896" class="text-primary font-headline font-bold flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">call</span> +91 99863 41896</a>
+  </div>
+</div>
 
 
 <!-- ══════════════════════ HOME PAGE ══════════════════════ -->
@@ -258,7 +272,7 @@ html { scroll-behavior: smooth; }
 <!-- HERO -->
 <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-surface">
   <div class="absolute inset-0 z-0">
-    <img alt="Premium Eyewear" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-kAtfvyfyFMG-YuLR-oPcxmnBMsjLbeTbl61cbSRbTMBDbsVpnukU4HpOHed-iTCErDTq4m3TtYAeYhHwLaR_RcLquLKXT1m9pldALYQSAqUb94-tW0O__elXxHsgfRXTmEQVejg95prf84oAx9xBDBOYQLeWi6F8oITRXrkVKGVpdhGxwfy_M79A_KJEwIUutiu9PQfa7Ox4ck0GvsbCSbduv7r4D9RtBeDxE11_P5yl3P--KEaqywu1FyiYq3J_6utn3jGAvBo"/>
+    <img alt="Precision Opticals store interior, Jayanagar" class="w-full h-full object-cover object-center" src="images/store/WhatsApp%20Image%202026-06-01%20at%206.23.29%20PM.jpeg"/>
     <div class="absolute inset-0 bg-gradient-to-r from-surface/95 via-surface/50 to-transparent"></div>
   </div>
   <div class="max-w-7xl mx-auto px-6 md:px-8 relative z-10 w-full py-20">
@@ -267,7 +281,7 @@ html { scroll-behavior: smooth; }
         <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
         Jayanagar's Most Trusted Since 2000
       </div>
-      <h1 class="font-headline text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter text-on-surface leading-[0.92] mb-6">
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl text-on-surface leading-[1.0] mb-6">
         Precision for Every <span class="text-primary italic">Perspective.</span>
       </h1>
       <p class="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed mb-10 max-w-xl">
@@ -284,12 +298,12 @@ html { scroll-behavior: smooth; }
     </div>
   </div>
   <!-- Floating Stats Card -->
-  <div class="absolute bottom-8 right-8 glass-overlay p-6 rounded-2xl hidden lg:flex gap-10 z-10 float-anim">
-    <div class="text-center"><p class="font-headline text-3xl font-extrabold text-primary">26+</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Years</p></div>
+  <div class="absolute bottom-8 right-8 glass-overlay p-6 rounded-2xl hidden lg:flex gap-10 z-10 float-anim stats-card">
+    <div class="text-center"><p class="font-headline text-3xl font-extrabold text-primary" data-count="26" data-suffix="+">26+</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Years</p></div>
     <div class="w-px bg-on-surface/10"></div>
-    <div class="text-center"><p class="font-headline text-3xl font-extrabold text-primary">4.9★</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Rating</p></div>
+    <div class="text-center"><p class="font-headline text-3xl font-extrabold text-primary" data-count="4.9" data-suffix="★" data-decimal="1">4.9★</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Rating</p></div>
     <div class="w-px bg-on-surface/10"></div>
-    <div class="text-center"><p class="font-headline text-3xl font-extrabold text-primary">263+</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Reviews</p></div>
+    <div class="text-center"><p class="font-headline text-3xl font-extrabold text-primary" data-count="263" data-suffix="+">263+</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Reviews</p></div>
   </div>
 </section>
 
@@ -347,7 +361,7 @@ html { scroll-behavior: smooth; }
   <div class="max-w-7xl mx-auto px-6 md:px-8">
     <div class="mb-14 fade-in">
       <span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-sm">Our Expertise</span>
-      <h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mt-4">Optical Intelligence.</h2>
+      <h2 class="font-display text-4xl md:text-5xl mt-4">Optical Intelligence.</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
       <!-- Large Card -->
@@ -364,7 +378,7 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <!-- Small Card -->
-      <div class="bg-primary-container text-on-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between group fade-in">
+      <div class="bg-primary-container text-on-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between group fade-in" style="transition-delay:100ms">
         <div>
           <span class="material-symbols-outlined text-4xl mb-5" style="font-variation-settings:'FILL' 1">fluid_med</span>
           <h3 class="font-headline text-xl md:text-2xl font-bold mb-3">Blue-Light Defense</h3>
@@ -375,7 +389,7 @@ html { scroll-behavior: smooth; }
         </button>
       </div>
       <!-- Small Card -->
-      <div class="bg-surface-container-highest rounded-3xl p-8 md:p-10 flex flex-col justify-between group fade-in">
+      <div class="bg-surface-container-highest rounded-3xl p-8 md:p-10 flex flex-col justify-between group fade-in" style="transition-delay:200ms">
         <div>
           <span class="material-symbols-outlined text-4xl mb-5">light_mode</span>
           <h3 class="font-headline text-xl md:text-2xl font-bold mb-3">Transitions® Lenses</h3>
@@ -386,7 +400,7 @@ html { scroll-behavior: smooth; }
         </button>
       </div>
       <!-- Wide Card -->
-      <div class="md:col-span-2 bg-surface-container rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-12 overflow-hidden fade-in">
+      <div class="md:col-span-2 bg-surface-container rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-12 overflow-hidden fade-in" style="transition-delay:150ms">
         <div class="flex-1">
           <h3 class="font-headline text-2xl md:text-3xl font-bold mb-4">Expert Frame Fitting</h3>
           <p class="text-on-surface-variant text-sm md:text-base">Personalised fitting sessions with trained professionals. Precise measurements tailored to your facial architecture for all-day comfort.</p>
@@ -428,8 +442,8 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <div class="lg:w-1/2 fade-in">
-        <span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-sm">Our Store</span>
-        <h2 class="font-headline text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mt-5 mb-7 leading-tight">Where Craft Meets Clarity.</h2>
+        <span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-sm">The Atelier</span>
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl mt-5 mb-7 leading-tight">Where Craft Meets Clarity.</h2>
         <p class="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8">
           Located in the heart of Jayanagar 4th Block, we've served Bengaluru families for over 26 years. Our specialists provide one-on-one consultations in a warm environment designed to let the frames and lenses speak for themselves.
         </p>
@@ -462,7 +476,7 @@ html { scroll-behavior: smooth; }
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-4 fade-in">
       <div>
         <span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-sm">Curated Frames</span>
-        <h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mt-4">Frame Your Future.</h2>
+        <h2 class="font-display text-4xl md:text-5xl mt-4">Frame Your Future.</h2>
       </div>
       <button onclick="switchPage('frames')" class="text-primary font-bold flex items-center gap-2 hover:underline text-sm">
         View Full Collection <span class="material-symbols-outlined text-sm">open_in_new</span>
@@ -470,7 +484,7 @@ html { scroll-behavior: smooth; }
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Vogue gray and pink wayfarer frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.02%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Vogue gray pink frame side view" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.15%20PM.png"/></div>
@@ -493,7 +507,7 @@ html { scroll-behavior: smooth; }
         <p class="text-on-surface-variant text-xs md:text-sm">Women · Gray & Pink</p>
       </div>
       <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Oakley clear and black exchange frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.07%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Oakley clear frame side view" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.14%20PM.png"/></div>
@@ -512,7 +526,7 @@ html { scroll-behavior: smooth; }
         <p class="text-on-surface-variant text-xs md:text-sm">Unisex · Clear & Black</p>
       </div>
       <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 relative overflow-hidden flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 md:mb-6 relative overflow-hidden flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors">
           <img alt="Calvin Klein black and gold acetate frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.22.09%20PM.png"/>
           <div class="absolute top-3 right-3 bg-surface p-1.5 rounded-full ambient-shadow opacity-0 group-hover:opacity-100 transition-opacity">
             <span class="material-symbols-outlined text-primary text-lg">favorite</span>
@@ -522,7 +536,7 @@ html { scroll-behavior: smooth; }
         <p class="text-on-surface-variant text-xs md:text-sm">Women · Black & Gold</p>
       </div>
       <div class="group fade-in">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 md:mb-6 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Emporio Armani navy acetate frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.11%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.49%20PM.png"/></div>
@@ -551,7 +565,7 @@ html { scroll-behavior: smooth; }
   <div class="max-w-7xl mx-auto px-6 md:px-8">
     <div class="text-center mb-14 fade-in">
       <span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-sm">Perspectives</span>
-      <h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mt-4">Trusted by Families.</h2>
+      <h2 class="font-display text-4xl md:text-5xl mt-4">Trusted by Families.</h2>
     </div>
     <div class="relative fade-in" id="testimonialsCarousel">
       <div class="overflow-hidden">
@@ -800,9 +814,11 @@ html { scroll-behavior: smooth; }
     </div>
     <!-- Grid -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" id="framesGrid">
+      <!-- Brand: Vogue -->
+      <div class="col-span-full flex items-center gap-3 pt-1 pb-0.5"><span class="font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Vogue</span><div class="flex-1 h-px bg-on-surface/8"></div></div>
       <!-- Vogue Gray/Pink -->
       <div class="group frame-item fade-in" data-cat="women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Vogue gray and pink wayfarer" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.02%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Vogue gray pink side view" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.04.15%20PM.png"/></div>
@@ -824,7 +840,7 @@ html { scroll-behavior: smooth; }
       </div>
       <!-- Vogue Burgundy -->
       <div class="group frame-item fade-in" data-cat="women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Vogue burgundy cat-eye frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.05.54%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Vogue burgundy frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.07.17%20PM.png"/></div>
@@ -842,9 +858,11 @@ html { scroll-behavior: smooth; }
         <p class="text-on-surface-variant text-xs">Women · Burgundy</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
+      <!-- Brand: Tommy Hilfiger -->
+      <div class="col-span-full flex items-center gap-3 pt-4 pb-0.5"><span class="font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Tommy Hilfiger</span><div class="flex-1 h-px bg-on-surface/8"></div></div>
       <!-- Tommy Hilfiger Titanium -->
       <div class="group frame-item fade-in" data-cat="men women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
           <img alt="Tommy Hilfiger titanium rectangular frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.21.12%20PM.png"/>
         </div>
         <h3 class="font-headline font-bold text-sm md:text-lg">Tommy Hilfiger</h3>
@@ -853,16 +871,18 @@ html { scroll-behavior: smooth; }
       </div>
       <!-- Tommy Hilfiger Nude -->
       <div class="group frame-item fade-in" data-cat="women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
           <img alt="Tommy Hilfiger nude tan rectangular frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.23.21%20PM.png"/>
         </div>
         <h3 class="font-headline font-bold text-sm md:text-lg">Tommy Hilfiger</h3>
         <p class="text-on-surface-variant text-xs">Women · Nude</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
+      <!-- Brand: Calvin Klein -->
+      <div class="col-span-full flex items-center gap-3 pt-4 pb-0.5"><span class="font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Calvin Klein</span><div class="flex-1 h-px bg-on-surface/8"></div></div>
       <!-- Calvin Klein Black & Gold -->
       <div class="group frame-item fade-in" data-cat="women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
           <img alt="Calvin Klein black and gold acetate frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.22.09%20PM.png"/>
         </div>
         <h3 class="font-headline font-bold text-sm md:text-lg">Calvin Klein</h3>
@@ -871,7 +891,7 @@ html { scroll-behavior: smooth; }
       </div>
       <!-- Calvin Klein Sage Green -->
       <div class="group frame-item fade-in" data-cat="men women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
           <img alt="Calvin Klein sage green frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.24.07%20PM.png"/>
         </div>
         <h3 class="font-headline font-bold text-sm md:text-lg">Calvin Klein</h3>
@@ -880,16 +900,18 @@ html { scroll-behavior: smooth; }
       </div>
       <!-- Calvin Klein Tan -->
       <div class="group frame-item fade-in" data-cat="men women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 flex items-center justify-center p-6 group-hover:bg-surface-container transition-colors overflow-hidden">
           <img alt="Calvin Klein tan gradient frame" loading="lazy" class="w-full object-contain group-hover:scale-110 transition-transform duration-500" src="images/frames/Screenshot%201948-03-12%20at%204.25.14%20PM.png"/>
         </div>
         <h3 class="font-headline font-bold text-sm md:text-lg">Calvin Klein</h3>
         <p class="text-on-surface-variant text-xs">Unisex · Tan</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
+      <!-- Brand: Oakley -->
+      <div class="col-span-full flex items-center gap-3 pt-4 pb-0.5"><span class="font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Oakley</span><div class="flex-1 h-px bg-on-surface/8"></div></div>
       <!-- Oakley Clear/Black -->
       <div class="group frame-item fade-in" data-cat="men women">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Oakley clear and black frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.07%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Oakley clear frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.26.14%20PM.png"/></div>
@@ -907,7 +929,7 @@ html { scroll-behavior: smooth; }
       </div>
       <!-- Oakley Black Angular -->
       <div class="group frame-item fade-in" data-cat="men">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Oakley black angular frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.27.04%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Oakley black frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.27.22%20PM.png"/></div>
@@ -925,9 +947,11 @@ html { scroll-behavior: smooth; }
         <p class="text-on-surface-variant text-xs">Men · Black</p>
         <p class="font-headline font-extrabold text-primary text-sm mt-1">Visit store</p>
       </div>
+      <!-- Brand: Emporio Armani -->
+      <div class="col-span-full flex items-center gap-3 pt-4 pb-0.5"><span class="font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Emporio Armani</span><div class="flex-1 h-px bg-on-surface/8"></div></div>
       <!-- Emporio Armani Navy Acetate -->
       <div class="group frame-item fade-in" data-cat="men">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Emporio Armani navy acetate frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.11%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Emporio Armani navy frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.28.49%20PM.png"/></div>
@@ -947,7 +971,7 @@ html { scroll-behavior: smooth; }
       </div>
       <!-- Emporio Armani Navy Metal -->
       <div class="group frame-item fade-in" data-cat="men">
-        <div class="aspect-[3/4] bg-surface-container-lowest rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
+        <div class="aspect-[3/4] bg-surface-container-low rounded-2xl md:rounded-3xl mb-4 frame-carousel group-hover:bg-surface-container transition-colors">
           <div class="frame-carousel-track">
             <div class="frame-carousel-slide"><img alt="Emporio Armani navy metal browline frame" loading="eager" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.30.58%20PM.png"/></div>
             <div class="frame-carousel-slide"><img alt="Emporio Armani metal frame side" loading="lazy" class="w-full object-contain" src="images/frames/Screenshot%201948-03-12%20at%204.31.05%20PM.png"/></div>
@@ -988,7 +1012,7 @@ html { scroll-behavior: smooth; }
     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
       <div class="lg:w-1/2 fade-in">
         <span class="text-primary font-headline font-bold tracking-[0.2em] uppercase text-sm">Our Story</span>
-        <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mt-5 mb-7 leading-tight">Trusted Eye Care Since 2000</h1>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl mt-5 mb-7 leading-tight">Trusted Eye Care Since 2000</h1>
         <p class="text-on-surface-variant text-base md:text-lg leading-relaxed mb-5">
           Precision Opticals has been Jayanagar's go-to destination for professional eye care and quality eyewear for over 26 years. We are proud to be a certified <strong class="text-on-surface">Essilor Expert store</strong> — a recognition of our commitment to dispensing the finest lenses and providing the highest standards of vision care.
         </p>
@@ -1184,9 +1208,10 @@ function switchPage(p, pushHistory) {
   });
 
   // Close mobile menu
-  document.getElementById('mobileMenu').classList.add('hidden');
+  document.getElementById('mobileMenu').classList.add('translate-x-full');
   document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
   document.getElementById('hamburger').setAttribute('aria-label', 'Open menu');
+  document.body.style.overflow = '';
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -1217,13 +1242,14 @@ document.querySelectorAll('.nav-link, .mob-link').forEach(l => {
   l.addEventListener('click', function(e) { e.preventDefault(); switchPage(this.dataset.page); });
 });
 
-// Mobile menu toggle
+// Mobile menu toggle (fullscreen overlay)
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('hamburger');
-  const isNowOpen = menu.classList.toggle('hidden') === false;
+  const isNowOpen = menu.classList.toggle('translate-x-full') === false;
   btn.setAttribute('aria-expanded', isNowOpen);
   btn.setAttribute('aria-label', isNowOpen ? 'Close menu' : 'Open menu');
+  document.body.style.overflow = isNowOpen ? 'hidden' : '';
 }
 
 // Scroll fade-in
@@ -1328,6 +1354,28 @@ window.addEventListener('scroll', () => {
   }
 
   document.querySelectorAll('.frame-carousel').forEach(initFrameCarousel);
+})();
+
+// Stats counter animation
+(function() {
+  function animateCount(el, target, suffix, decimals, duration) {
+    var start = 0, step = target / (duration / 16), isInt = decimals === 0;
+    var timer = setInterval(function() {
+      start = Math.min(start + step, target);
+      el.textContent = (isInt ? Math.round(start) : start.toFixed(decimals)) + suffix;
+      if (start >= target) clearInterval(timer);
+    }, 16);
+  }
+  var statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll('[data-count]').forEach(function(el) {
+        animateCount(el, parseFloat(el.dataset.count), el.dataset.suffix || '', parseInt(el.dataset.decimal || '0'), 1200);
+      });
+      statsObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll('.stats-card').forEach(function(el) { statsObserver.observe(el); });
 })();
 
 // Testimonials carousel
